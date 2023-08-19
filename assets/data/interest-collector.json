@@ -1,0 +1,22 @@
+{
+  "contentType": {
+    "universities": {
+      "title": "Universidades"
+    },
+    "career": {
+      "title": "Carreiras"
+    },
+    "entranceExams": {
+      "title": "Vestibular e Enem"
+    },
+    "interests": {
+      "universities": [
+        {
+          "title": "Direito"
+        }
+      ],
+      "career": [],
+      "entranceExams": []
+    }
+  }
+}
