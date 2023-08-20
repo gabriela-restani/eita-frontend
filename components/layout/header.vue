@@ -9,10 +9,20 @@
         QueroLink
       </q-toolbar-title>
 
-      <q-btn flat round dense icon="account_circle" size="lg"/>
+      <q-btn flat round dense icon="account_circle" size="lg" @click="handleAvatarClick"/>
     </q-toolbar>
   </q-header>
 </template>
+
+<script setup lang="ts">
+const { recalculateUserInterests } = useServer();
+
+function handleAvatarClick() {
+  console.log('handleAvatarClick');
+  const { userId } = JSON.parse(localStorage.getItem('eita-frontend') ?? '{}');
+  recalculateUserInterests({ userId });
+}
+</script>
 
 <style scoped>
 .header {
