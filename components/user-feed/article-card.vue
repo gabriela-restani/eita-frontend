@@ -1,6 +1,7 @@
 <template>
   <q-card 
     class="article-card cursor-pointer"
+    :class="{ 'article-card--course': props.article.kind === 'course'}"
     role="link"
     :aria-label="`Leia sobre ${ article.title }`"
     tabindex="0"
@@ -8,11 +9,12 @@
   >
     <q-card-section class="article-card__header">
       <q-img
-        :src="article.image"
+        v-if="props.article.kind === 'post'"
+        :src="props.article.image"
         :alt="article.title"
         class="user-feed-article-card__image"
       />
-      <q-card-actions vertical class="article-card__actions">
+      <q-card-actions vertical class="article-card__actions" v-if="props.article.kind === 'post'">
         <q-btn
           flat
           round
@@ -72,7 +74,14 @@ function interact(id, event) {
 }
 
 function goToArticlePage(slug) {
-  const target = `https://querobolsa.com.br/revista/${ slug }`;
+  let target = `https://querobolsa.com.br/revista/${ slug }`;
+
+  if (props.article.kind === 'course') {
+    const searchParams = new URLSearchParams({
+      c: props.article.title,
+    });
+    target = 'https://querobolsa.com.br/busca-cursos/resultados?' + searchParams;
+  } 
 
   const hasAParentLinkOrParentButton = event?.path?.some(element => (
     ['A', 'BUTTON'].includes(element?.tagName)
@@ -98,6 +107,10 @@ function handleInteraction(newInteraction) {
   border-radius: 8px;
   height: fit-content;
   width: 100%;
+}
+
+.article-card--course {
+  background-color: #e3f2fd;
 }
 
 .article-card:hover {
