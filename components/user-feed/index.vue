@@ -1,40 +1,41 @@
 <template>
   <div class="q-pt-md user-feed">
       <ArticleCard
-        v-for="(article, index) in [article1, article2, article3, article2, article3, article1]"
-        :key="`article-${index}`"
-        :article="article"
+        v-for="(content, index) in contents"
+        :key="`content-${index}`"
+        :article="content"
         class="q-mt-md"
+        @like="sendInteraction($event, 'Like')"
+        @dislike="sendInteraction($event, 'Dislike')"
       />
   </div>
 </template>
 <script setup>
 import ArticleCard from '~/components/user-feed/article-card';
-import { ref } from 'vue';
 
-const article1 = ref({
-  title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl.',
-  image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
+const { createInteraction, recalculateUserInterests } = useServer();
+
+const props = defineProps({
+  contents: {
+    type: Array,
+    required: true,
+  },
 });
 
-const article2 = ref({
-  title: 'Lorem ipsum dolor sit amet.',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl.',
-  image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
-});
+function sendInteraction(id, action) {
+  const params = {
+    userId: '10',
+    contentId: id,
+    classification: action,
+  };
 
-const article3 = ref({
-  title: 'Lorem ipsum dolor sit amet. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl.',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl. Donec euismod, nisl eget consequat aliquam, odio nisl aliquet nunc, quis aliquam nisl nunc quis nisl.',
-  image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
-});
+  createInteraction(params);
+}
 
-const articles = ref([
-  article1,
-  article2,
-  article3,
-]);
+onBeforeUnmount(() => {
+  console.log('hey');
+  recalculateUserInterests({ userId: '10' })
+});
 </script>
 
 <style scoped>
