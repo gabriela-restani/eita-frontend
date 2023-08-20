@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
 import UserFeed from '~/components/user-feed/index.vue';
-const { createInteraction, recalculateUserInterests, getFeed } = useServer();
-
+const { getFeed } = useServer();
 
 const { userId } = JSON.parse(localStorage.getItem('eita-frontend') ?? '{}');
 
