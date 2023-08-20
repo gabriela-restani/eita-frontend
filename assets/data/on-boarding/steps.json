@@ -1,7 +1,6 @@
 {
   "steps": {
     "userRegister": {
-      "title": "Vamos criar a sua conta!",
       "prefix": 1,
       "name": 1,
       "component": "Register"
