@@ -63,9 +63,12 @@ function handleStepSubmit(data) {
 }
 
 function submitUserInfo(data) {
-  console.log(data);
   userInfo.value = { ...userInfo.value, ...data };
-  console.log(userInfo.value);
+
+  useServer().createUser({
+    name: userInfo.value.userName,
+    interests: userInfo.value.userInterests,
+  });
 }
 
 
