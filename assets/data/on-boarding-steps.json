@@ -1,0 +1,22 @@
+{
+  "steps": {
+    "userRegister": {
+      "title": "Vamos criar a sua conta!",
+      "prefix": 1,
+      "name": 1,
+      "component": "Register"
+    },
+    "userMoment": {
+      "title": "O que você busca nesse momento da sua vida?",
+      "prefix": 2,
+      "name": 2,
+      "component": "UserMoment"
+    },
+    "userInterests": {
+      "title": "Por quais desses temas você se interessa?",
+      "prefix": 3,
+      "name": 3,
+      "component": "UserInterests"
+    }
+  }
+}
