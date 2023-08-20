@@ -16,7 +16,6 @@
     <q-stepper-navigation class="user-register__step-nav">
         <q-btn 
           class="user-register__step-nav__btn"
-          color="deep-orange" 
           label="Continue" 
           @click="submitUserInfo" 
         />
@@ -71,6 +70,8 @@ function submitUserInfo() {
 
 .user-register__step-nav__btn {
   width: 100%;
+  background-color: #304FFE;
+  color: #fff;
 }
 
 .user-register__step-nav__btn--reserved {
