@@ -62,13 +62,16 @@ function handleStepSubmit(data) {
   }
 }
 
-function submitUserInfo(data) {
+async function submitUserInfo(data) {
   userInfo.value = { ...userInfo.value, ...data };
 
-  useServer().createUser({
+  const { data: dataServer } = await useServer().createUser({
     name: userInfo.value.userName,
     interests: userInfo.value.userInterests,
   });
+
+  const payload = { userId: dataServer.value.id };
+  localStorage.setItem('eita-frontend', JSON.stringify(payload));
 }
 
 

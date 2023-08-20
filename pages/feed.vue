@@ -3,7 +3,7 @@
     <q-btn
       color="purple"
       label="Recalcular"
-      @click="recalculateUserInterests({ userId: '8' })"
+      @click="recalculateUserInterests({ userId })"
     />
 
     <q-card
@@ -21,13 +21,13 @@
         <q-btn
           color="primary"
           label="Like"
-          @click="createInteraction({ userId: '8', contentId: item.id, classification: 'Like' })"
+          @click="createInteraction({ userId, contentId: item.id, classification: 'Like' })"
         />
         
         <q-btn
           color="deep-orange"
           label="Dislike"
-          @click="createInteraction({ userId: '8', contentId: item.id, classification: 'Dislike' })"
+          @click="createInteraction({ userId, contentId: item.id, classification: 'Dislike' })"
         />
       </q-card-section>
     </q-card>
@@ -37,8 +37,13 @@
 <script setup lang="ts">
 const { createInteraction, recalculateUserInterests, getFeed } = useServer();
 
+
+const { userId } = JSON.parse(localStorage.getItem('eita-frontend') ?? '{}');
+
+console.log({ userId })
+
 const { data } = await getFeed({
-  userId: '8'
+  userId
 });
 
 const contents = data.value.contents;
