@@ -5,8 +5,8 @@
         :key="`content-${index}`"
         :article="content"
         class="q-mt-md"
-        @like="sendInteraction($event, 'Like')"
-        @dislike="sendInteraction($event, 'Dislike')"
+        @like="sendInteraction($event, 'like')"
+        @dislike="sendInteraction($event, 'dislike')"
       />
   </div>
 </template>
@@ -22,9 +22,11 @@ const props = defineProps({
   },
 });
 
+const { userId } = JSON.parse(localStorage.getItem('eita-frontend') ?? '{}');
+
 function sendInteraction(id, action) {
   const params = {
-    userId: '10',
+    userId,
     contentId: id,
     classification: action,
   };

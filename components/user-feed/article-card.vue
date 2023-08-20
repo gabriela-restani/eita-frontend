@@ -85,7 +85,7 @@ function goToArticlePage(slug) {
 
 function handleInteraction(newInteraction) {
   interaction.value = newInteraction;
-  interact(article.id, newInteraction)
+  interact(props.article.id, newInteraction)
 }
 </script>
 
