@@ -1,63 +1,36 @@
-# Nuxt 3 Minimal Starter
+# Eita Frontend
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+O produto consiste em aplicativo de geração de conteúdo de educação personalizado para o usuário.
+
+No frontend temos a tela de criação de usuário (`/`) onde ele fornece diversas informações sobre conteúdos que ele gosta e que não gosta,
+e a partir disso na tela de Feed (`/feed`) sistema gera um conteúdo personalizado para ele.
+
+## Stack
+
+- TypeScript
+- Nuxt.js
+- Quasar Framework
 
 ## Setup
 
-Make sure to install the dependencies:
+Você precisa ter o [eita-backend](https://github.com/vitebo/eita-backend) rodando localmente para que o frontend funcione corretamente.
+
+Você consegue configurar o `HOST` com a env: `NUXT_PUBLIC_HOST`, para isso basta criar um arquivo `.env` na aplicação com o seguinte conteúdo:
+
+```bash
+NUXT_PUBLIC_HOST=http://localhost:3000
+```
+
+Instale as dependências:
 
 ```bash
 # npm
 npm install
+`
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Suba o servidor:
 
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
