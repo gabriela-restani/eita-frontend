@@ -7,9 +7,14 @@
           v-for="(item, index) in userInterestsForm.interests"
           :key="`user-interests-${index}`"
           v-model:selected="userInterests[item]"
+          :class="{
+            'user-interests__chip--selected': userInterests[item],
+          }"
           icon="favorite_border"
           size="lg"
-          outline
+          color="indigo-14"
+          :text-color="userInterests[item] ? 'white' : 'indigo-14'"
+          :outline="!userInterests[item]"
           square
         >
           {{ item }}
