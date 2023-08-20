@@ -31,7 +31,7 @@
 
         <q-btn 
           flat
-          class="user-interests__step-nav__btn user-interests__step-nav__btn--flat q-mt-md"
+          class="user-interests__step-nav__btn user-interests__step-nav__btn--flat q-my-md"
           label="Voltar" 
           @click="returnStep" 
         />
@@ -72,7 +72,7 @@ function returnStep() {
 
 <style scoped>
 .user-interests {
-  height: 75vh;
+  height: 81vh;
   width: calc(100vw - 48px);
   display: flex;
   flex-direction: column;
