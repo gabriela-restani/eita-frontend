@@ -1,7 +1,7 @@
 <template>
   <div class="user-register">
     <div class="user-register__form-wrapper">
-      <h1 class="text-h5"> Vamos começar! Como você se chama? </h1>
+      <h1 class="text-h5"> {{ userRegisterForm.title }} </h1>
       <q-input 
         outlined 
         v-for="(input, key) in userRegisterForm.inputs"
