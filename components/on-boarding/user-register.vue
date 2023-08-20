@@ -28,17 +28,15 @@
 import { ref } from 'vue';
 import userRegisterForm from '~/assets/data/on-boarding/user-register-form.json'
 
-const userName = ref('');
-
 const emit = defineEmits(['submit']);
 
 const userInfo = ref({
-  name: '',
+  userName: '',
 });
 
 
 function submitUserInfo() {
-  emit('submit', userInfo);
+  emit('submit', userInfo.value);
 }
 </script>
 

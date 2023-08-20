@@ -54,7 +54,7 @@ const includesValue = (value) => {
 const emit = defineEmits(['submit', 'return']);
 
 function submitUserInfo() {
-  emit('submit', { userMoments });
+  emit('submit', { userMoments: [...userMoments.value] });
 }
 
 function returnStep() {
