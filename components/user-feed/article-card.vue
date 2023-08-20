@@ -19,6 +19,7 @@
           icon="thumb_up"
           class="article-card__action"
           arial-label="Gostei"
+          @click="interact(article.id, 'like')"
         />
         <q-btn
           flat
@@ -27,6 +28,7 @@
           icon="thumb_down"
           class="article-card__action"
           aria-label="Não gostei"
+          @click="interact(article.id, 'dislike')"
         />
         <q-btn
           flat
@@ -35,6 +37,7 @@
           icon="share"
           class="article-card__action"
           aria-label="Compartilhar"
+          @click="sharePost(article)"
         />
       </q-card-actions>
     </q-card-section>
@@ -43,7 +46,7 @@
         {{ article.title }}
       </h3>
       <p class=" q-mt-sm article-card__content">
-        {{ article.description }}
+        {{ article.body }}
       </p>
     </q-card-section>
   </q-card>
@@ -57,6 +60,12 @@ const props = defineProps({
     required: true,
   },
 });
+
+const emit = defineEmits(['like', 'dislike']);
+
+function interact(id, event) {
+  emit(event, id);
+}
 
 </script>
 
