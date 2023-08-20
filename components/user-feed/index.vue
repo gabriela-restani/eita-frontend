@@ -13,7 +13,7 @@
 <script setup>
 import ArticleCard from '~/components/user-feed/article-card';
 
-const { createInteraction, recalculateUserInterests } = useServer();
+const { createInteraction } = useServer();
 
 const props = defineProps({
   contents: {
@@ -31,11 +31,6 @@ function sendInteraction(id, action) {
 
   createInteraction(params);
 }
-
-onBeforeUnmount(() => {
-  console.log('hey');
-  recalculateUserInterests({ userId: '10' })
-});
 </script>
 
 <style scoped>
