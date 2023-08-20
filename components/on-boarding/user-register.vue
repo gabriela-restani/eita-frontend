@@ -4,10 +4,12 @@
       <h1 class="text-h5"> Vamos começar! Como você se chama? </h1>
       <q-input 
         outlined 
-        v-model="userName" 
-        name="userName"
-        type="text"
-        label="Seu nome" 
+        v-for="(input, key) in userRegisterForm.inputs"
+        :key="`user-register-input-${key}`"
+        v-model="userInfo[key]" 
+        :name="input.name"
+        :type="input.type"
+        :label="input.label" 
       />
     </div>
 
@@ -25,16 +27,18 @@
 </template>
 <script setup>
 import { ref } from 'vue';
+import userRegisterForm from '~/assets/data/on-boarding/user-register-form.json'
 
 const userName = ref('');
 
 const emit = defineEmits(['submit']);
 
-function submitUserInfo() {
-  const userInfo = {
-    name: userName.value,
-  };
+const userInfo = ref({
+  name: '',
+});
 
+
+function submitUserInfo() {
   emit('submit', userInfo);
 }
 </script>
