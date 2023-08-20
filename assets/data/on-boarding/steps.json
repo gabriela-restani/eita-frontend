@@ -1,21 +1,22 @@
 {
   "steps": {
     "userRegister": {
-      "prefix": 1,
+      "component": "Register",
       "name": 1,
-      "component": "Register"
+      "prefix": 1,
+      "title": "Vamos começar?"
     },
     "userMoment": {
-      "title": "O que você busca nesse momento da sua vida?",
-      "prefix": 2,
+      "component": "UserMoment",
       "name": 2,
-      "component": "UserMoment"
+      "prefix": 2,
+      "title": "O que você busca nesse momento da sua vida?"
     },
     "userInterests": {
-      "title": "Por quais desses temas você se interessa?",
-      "prefix": 3,
+      "component": "UserInterests",
       "name": 3,
-      "component": "UserInterests"
+      "prefix": 3,
+      "title": "Por quais desses temas você se interessa?"
     }
   }
 }
