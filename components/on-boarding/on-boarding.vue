@@ -72,6 +72,8 @@ async function submitUserInfo(data) {
 
   const payload = { userId: dataServer.value.id };
   localStorage.setItem('eita-frontend', JSON.stringify(payload));
+
+  useRouter().push('/feed');
 }
 
 
