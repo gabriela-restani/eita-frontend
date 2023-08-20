@@ -77,6 +77,7 @@ function interact(id, event) {
   margin: 8px auto;
   border-radius: 8px;
   height: fit-content;
+  width: 100%;
 }
 
 .article-card:hover {
@@ -96,7 +97,23 @@ function interact(id, event) {
   width: 100px;
   height: 100px;
   object-fit: cover;
+
 }
+
+.user-feed-article-card__image {
+  background-color: hsl(200, 20%, 95%);
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 80%);
+    }
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+
 
 .article-card__actions {
   display: flex;
