@@ -18,8 +18,8 @@
             <q-checkbox v-model="userMoments" :val="checkbox.value" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>{{ checkbox.label }}</q-item-label>
-            <q-item-label caption>{{ checkbox.caption }}</q-item-label>
+            <q-item-label class="text-body1">{{ checkbox.label }}</q-item-label>
+            <q-item-label class="user-moment__check-box-caption" caption>{{ checkbox.caption }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -34,7 +34,7 @@
 
         <q-btn 
           flat
-          class="user-moment__step-nav__btn user-moment__step-nav__btn--flat q-mt-md"
+          class="user-moment__step-nav__btn user-moment__step-nav__btn--flat q-my-md"
           label="Voltar" 
           @click="returnStep" 
         />
@@ -64,7 +64,7 @@ function returnStep() {
 
 <style scoped>
 .user-moment {
-  height: 75vh;
+  height: 81vh;
   width: calc(100vw - 48px);
   display: flex;
   flex-direction: column;
@@ -104,4 +104,8 @@ function returnStep() {
   color: #304FFE;
 }
 
+.user-moment__check-box-caption {
+  color: #6f7c82;
+  font-size: 14px;
+}
 </style>
