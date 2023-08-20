@@ -42,7 +42,7 @@ function submitUserInfo() {
 
 <style scoped>
 .user-register {
-  height: 75vh;
+  height: 81vh;
   width: calc(100vw - 48px);
   display: flex;
   flex-direction: column;
