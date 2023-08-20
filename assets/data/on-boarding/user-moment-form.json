@@ -1,0 +1,25 @@
+{
+  "title": "O que você busca nesse momento da sua vida?",
+  "checkboxValues": [
+    {
+      "value": "Evolução na carreira",
+      "label": "Evolução na carreira",
+      "caption": "Busco conteúdo para evoluir minha carreira"
+    },
+    {
+      "value": "Estudando para o Vestibular",
+      "label": "Estudando para o Vestibular",
+      "caption": "Busco conteúdo para passar no Enem ou Vestibular"
+    },
+    {
+      "value": "Sou universitário",
+      "label": "Sou universitário",
+      "caption": "Quero entender que profissões posso ter ligadas ao meu curso"
+    },
+    {
+      "value": "Curiosidades",
+      "label": "Curiosidades",
+      "caption": "Busco conteúdo para me entreter"
+    }
+  ]
+}
