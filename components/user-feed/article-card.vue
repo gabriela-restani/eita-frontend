@@ -4,6 +4,7 @@
     role="link"
     :aria-label="`Leia sobre ${ article.title }`"
     tabindex="0"
+    @click="goToArticlePage(article.slug)"
   >
     <q-card-section class="article-card__header">
       <q-img
@@ -19,7 +20,7 @@
           icon="thumb_up"
           class="article-card__action"
           arial-label="Gostei"
-          @click="interact(article.id, 'like')"
+          @click.stop="interact(article.id, 'like')"
         />
         <q-btn
           flat
@@ -28,7 +29,7 @@
           icon="thumb_down"
           class="article-card__action"
           aria-label="Não gostei"
-          @click="interact(article.id, 'dislike')"
+          @click.stop="interact(article.id, 'dislike')"
         />
         <q-btn
           flat
@@ -37,7 +38,7 @@
           icon="share"
           class="article-card__action"
           aria-label="Compartilhar"
-          @click="sharePost(article)"
+          @click.stop="sharePost(article)"
         />
       </q-card-actions>
     </q-card-section>
@@ -67,6 +68,17 @@ function interact(id, event) {
   emit(event, id);
 }
 
+function goToArticlePage(slug) {
+  const target = `https://querobolsa.com.br/revista/${ slug }`;
+
+  const hasAParentLinkOrParentButton = event?.path?.some(element => (
+    ['A', 'BUTTON'].includes(element?.tagName)
+  ));
+
+  if (!hasAParentLinkOrParentButton) {
+    window.open(target);
+  }
+}
 </script>
 
 <style scoped>
