@@ -19,8 +19,9 @@
           dense
           icon="thumb_up"
           class="article-card__action"
+          :class="{ 'article-card__action--liked': interaction === 'like' }"
           arial-label="Gostei"
-          @click.stop="interact(article.id, 'like')"
+          @click.stop="handleInteraction('like')"
         />
         <q-btn
           flat
@@ -28,8 +29,9 @@
           dense
           icon="thumb_down"
           class="article-card__action"
+          :class="{ 'article-card__action--disliked': interaction === 'dislike' }"
           aria-label="Não gostei"
-          @click.stop="interact(article.id, 'dislike')"
+          @click.stop="handleInteraction('dislike')"
         />
         <q-btn
           flat
@@ -63,6 +65,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['like', 'dislike']);
+const interaction = ref(null);
 
 function interact(id, event) {
   emit(event, id);
@@ -78,6 +81,11 @@ function goToArticlePage(slug) {
   if (!hasAParentLinkOrParentButton) {
     window.open(target);
   }
+}
+
+function handleInteraction(newInteraction) {
+  interaction.value = newInteraction;
+  interact(article.id, newInteraction)
 }
 </script>
 
@@ -131,6 +139,14 @@ function goToArticlePage(slug) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.article-card__action--liked {
+  color: var(--q-positive);
+}
+
+.article-card__action--disliked {
+  color: var(--q-negative);
 }
 
 .article-card__title {
