@@ -51,7 +51,7 @@ const includesValue = (value) => {
   return userMoments.value.includes(value);
 };
 
-const emit = defineEmits(['submit']);
+const emit = defineEmits(['submit', 'return']);
 
 function submitUserInfo() {
   emit('submit', { userMoments });
