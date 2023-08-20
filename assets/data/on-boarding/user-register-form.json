@@ -1,0 +1,10 @@
+{
+  "title": "Vamos criar a sua conta!",
+  "inputs": {
+    "userName": {
+      "name": "name",
+      "type": "text",
+      "label": "Seu nome completo"
+    }
+  }
+}
